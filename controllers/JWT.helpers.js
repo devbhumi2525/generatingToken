@@ -38,7 +38,7 @@ module.exports = {
   refreshAccessToken: (userId)=> {
     return new Promise( (resolve, reject)=>{
       const payload={}
-      const secret={}
+      const secret=process.env.REFRESH_ACCESS_SECRET
       const option={
         expiresIn:'1y',
         issuer:"Gray Chain",
