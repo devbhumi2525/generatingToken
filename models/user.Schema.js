@@ -19,9 +19,11 @@ const UserSchema = new mongoose.Schema({
 //hashing password
 UserSchema.pre("save", async function (next) {
   try {
-    const salt = await bcrypt.genSalt(8);
-    const hashPass = await bcrypt.hash(this.password, salt);
-    this.password = hashPass;
+    if (this.isNew) {
+      const salt = await bcrypt.genSalt(8);
+      const hashPass = await bcrypt.hash(this.password, salt);
+      this.password = hashPass;
+    }
   } catch (error) {
     next(error);
   }
