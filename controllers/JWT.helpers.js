@@ -44,7 +44,7 @@ module.exports = {
         issuer:"Gray Chain",
         audience:userId
       }
-      JWT.sign(payload, option, secret,(err, token)=>{
+      JWT.sign(payload, secret,option,(err, token)=>{
         if(err) return reject(createError.InternalServerError())
         return resolve(token)
       })

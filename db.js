@@ -1,9 +1,8 @@
 const mongoose=require('mongoose')
-const createError= require('http-errors')
 const mongoConnect=async(url, dbName)=>{
     try {
       const conString= await mongoose.connect(url,{
-            dbName:dbName
+            dbName
         })
         if(conString) console.log(`DB is Connected`)
         

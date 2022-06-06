@@ -1,19 +1,24 @@
 const express = require('express')
 const createError= require('http-errors')
+const loginRoute = require('./controllers/login.route')
+const signUp = require('./controllers/signup.route')
 const userRouter = require('./controllers/user.route')
 const app= express()
 require('dotenv').config()
 const {mongoConnect}=require('./db')
 app.use(express.json())
+// app.use(cookieParser());
 app.use(express.urlencoded({extended:false}))
+app.set('view engine','ejs')
 
 // user routes
-
 app.use('/',userRouter)
-
-
+// login routes
+app.use('/',loginRoute)
+//signup route
+app.use('/',signUp)
 app.get('/',(req, res)=>{
-    res.send("Hellow")
+    res.render('index')
 })
 
 
