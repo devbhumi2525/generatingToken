@@ -1,9 +1,11 @@
 const userRouter= require('express').Router()
+const {verifyAccessToken}= require('./JWT.helpers')
 
 userRouter.get('/user',async(req, res)=>{
 
-    console.log(req.cookies)
-    res.send('data')
+    const {token}=req.cookies
+    // await verifyAccessTokengit
+
 
 })
 userRouter.post('/user',async(req, res)=>{
